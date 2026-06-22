@@ -80,7 +80,57 @@ class BinarySearchTree {
 BinarySearchTree::BinarySearchTree() {
     root = nullptr;
 
-};
+}
+
+//================================================================
+// Insert
+//================================================================
+
+void BinarySearchTree::Insert(Course course) {
+
+    if(root == nullptr) {
+        root = new Node(course);
+    }
+    else {
+        addNode(root, course);
+    }
+}
+
+//===============================================================
+// addNode
+//===============================================================
+
+void BinarySearchTree::addNode(Node* node, Course course) {
+
+    if (course.courseNumber < node->course.courseNumber) {
+
+        if (node->left == nullptr) {
+            node->left = new Node(course);
+        }
+        else {
+            addNode(node->left, course);
+        }
+        
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
