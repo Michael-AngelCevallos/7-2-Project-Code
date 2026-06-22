@@ -112,6 +112,17 @@ void BinarySearchTree::addNode(Node* node, Course course) {
         }
 
     }
+    else {
+
+        if(node->right == nullptr) {
+           node->right = new Node(course);
+
+        }
+        else {
+            addNode(node->right, course);
+        }
+
+    }
 }
 
 
@@ -164,6 +175,8 @@ void BinarySearchTree::inOrder(Node* node) {
     << ", "
     << node->course.courseTitle
     << endl;
+
+    inOrder(node->right);
 
 }
 
@@ -288,11 +301,16 @@ int main() {
         switch(choice) {
         
         case 1: 
-            cout << "Load Data Structure selected." << endl;
+            loadCourses("CS 300 ABCU_Advising_Program_Input.csv", &bst);
             break;
             
         case 2:
-            cout << "Print Course List Selected." << endl;
+            cout << endl;
+            cout << "Here is a sample schedule:" << endl;
+            cout << endl;
+
+            bst.InOrder();
+
             break;
             
         case 3:
