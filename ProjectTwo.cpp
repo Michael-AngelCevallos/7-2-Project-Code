@@ -110,12 +110,32 @@ void BinarySearchTree::addNode(Node* node, Course course) {
         else {
             addNode(node->left, course);
         }
-        
+
     }
 }
 
 
+//============================================================
+// Search
+//============================================================
 
+Course BinarySearchTree::Search(string courseNumber) {
+
+    Node* current = root;
+
+    while (current !=nullptr) {
+
+        if (current->course.courseNumber == courseNumber) {
+            current = current->left;
+        }
+        else {
+            current = current->right;
+
+        }
+    }
+
+    return Course();
+}
 
 
 
