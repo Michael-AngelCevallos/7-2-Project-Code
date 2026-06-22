@@ -137,6 +137,10 @@ Course BinarySearchTree::Search(string courseNumber) {
     while (current !=nullptr) {
 
         if (current->course.courseNumber == courseNumber) {
+            return current->course;
+        }
+
+        if (courseNumber < current->course.courseNumber) {
             current = current->left;
         }
         else {
@@ -298,12 +302,20 @@ int main() {
         cout << "What would you like to do? (Enter Number Choice)";
         cin >> choice;
 
+
+
+
+
+
+        /* MENU SWITCH CASE LOGIC START */
         switch(choice) {
         
         case 1: 
             loadCourses("CS 300 ABCU_Advising_Program_Input.csv", &bst);
             break;
             
+
+
         case 2:
             cout << endl;
             cout << "Here is a sample schedule:" << endl;
@@ -313,14 +325,61 @@ int main() {
 
             break;
             
-        case 3:
-            cout << "Print Course selected." << endl;
-            break;
+
+
+        case 3: {
+            string courseNumber;
+
+            cout << "What course do you want to know about? ";
+            cin >> courseNumber;
+
+            Course course = bst.Search(courseNumber);
+
+            if (!course.courseNumber.empty()) {
+
+                cout << endl;
+
+                cout << course.courseNumber
+                     << ", "
+                     << course.courseTitle
+                     << endl;
+                
+                cout << "Prerequisites: ";
+
+            if (course.prerequisites.size() == 0) {
+                cout << "None";
+
+            }
+            else {
+
+                for (int i = 0; i < course.prerequisites.size(); i++) {
+
+                    cout << course.prerequisites[i];
+
+                    if(i < course.prerequisites.size() - 1) {
+                        cout << ", ";
+                    }
+                }
+            }
             
+            cout << endl;
+
+            }
+            else{
+                cout << "Course not found." << endl;
+            }
+            break;
+        }
+            
+
+
         case 9:
             cout << "Thank you for using the course planner!" << endl;
             break;
             
+
+
+
         default:
             cout << choice << " is not a valid option." << endl;    
 
