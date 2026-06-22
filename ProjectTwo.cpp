@@ -186,9 +186,35 @@ void loadCourses(string fileName, BinarySearchTree* bst) {
 
     string line;
 
+
+    /* PARSES GIVEN DATA FROM CSV INTO TOKENS */
     while (getline(file, line)) {
 
+        vector<string> tokens;
 
+        stringstream ss(line);
+        string token;
+
+        while (getline(ss, token, ',')) {
+
+            tokens.push_back(token);
+        }
+
+        Course course;
+
+        course.courseNumber = tokens[0];
+        course.courseTitle = tokens[1];
+
+        for (int i = 2; i < tokens.size(); i++) {
+
+            if (!tokens[i].empty()) {
+                course.prerequisites.push_back(tokens[i]);
+
+            }
+
+        }
+
+        bst->Insert(course);
 
     }
 
