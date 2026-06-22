@@ -168,6 +168,34 @@ void BinarySearchTree::inOrder(Node* node) {
 }
 
 
+//==================================================================
+// Load Courses Function
+//==================================================================
+
+void loadCourses(string fileName, BinarySearchTree* bst) {
+
+
+    /* OPENS CSV FILE */
+    ifstream file(fileName);
+
+    /* HANDLES WHEN FILE IS BAD - PREVENTS CRASHING */
+    if (!file.is_open()){
+        cout << "Error opening file." << endl;
+        return;
+    }
+
+    string line;
+
+    while (getline(file, line)) {
+
+
+
+    }
+
+    file.close();
+
+    cout << "Courses loaded successfully." << endl;
+}
 
 
 
@@ -176,6 +204,28 @@ void BinarySearchTree::inOrder(Node* node) {
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//======================================================================
+// Function prototype
+//======================================================================
+
+void loadCourses(string fileName, BinarySearchTree* bst);
 
 
 
