@@ -137,10 +137,35 @@ Course BinarySearchTree::Search(string courseNumber) {
     return Course();
 }
 
+//===================================================================================================
+// InOrder (Search Method)
+//===================================================================================================
+
+void BinarySearchTree::InOrder() {
+    inOrder(root);
+}
 
 
 
 
+//=============================================================
+//inOrder
+//=============================================================
+
+void BinarySearchTree::inOrder(Node* node) {
+
+    if (node == nullptr) {
+        return;
+    }
+
+    inOrder(node->left);
+
+    cout << node->course.courseNumber
+    << ", "
+    << node->course.courseTitle
+    << endl;
+
+}
 
 
 
