@@ -263,7 +263,51 @@ void loadCourses(string fileName, BinarySearchTree* bst);
 
 int main() {
 
-    cout << "Project Two Starting..." << endl;
+    BinarySearchTree bst;
+
+    int choice = 0;
+
+
+    /* WELCOME MESSAGE */
+    cout << "Welcome to the course planner." << endl;
+
+
+    /* COURSE MENU OPTIONS */
+    while (choice != 9) {
+
+        cout << endl;
+        cout << " 1. Load Data Structure." << endl;
+        cout << " 2. Print Course List." << endl;
+        cout << " 3. Print Course." << endl;
+        cout << " 9. Exit." << endl;
+        cout << endl;
+
+        cout << "What would you like to do? (Enter Number Choice)";
+        cin >> choice;
+
+        switch(choice) {
+        
+        case 1: 
+            cout << "Load Data Structure selected." << endl;
+            break;
+            
+        case 2:
+            cout << "Print Course List Selected." << endl;
+            break;
+            
+        case 3:
+            cout << "Print Course selected." << endl;
+            break;
+            
+        case 9:
+            cout << "Thank you for using the course planner!" << endl;
+            break;
+            
+        default:
+            cout << choice << " is not a valid option." << endl;    
+
+        }
+    }
 
     return 0;
 }
