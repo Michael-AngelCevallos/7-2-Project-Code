@@ -1,3 +1,53 @@
+//===================================================================================================================
+/**
+ * 
+ * * CS 300 Data Structures & Algorithms SNHU
+ * * Project Two - Advising Assistance Program
+ * 
+ * 
+ * 
+ * * This program Loads Course Data from a CSV file into a Binary Search Tree,
+ * *  displays an alphanumeric list of courses, and allows users to search for
+ * *   a specific course and view its prerequisites.
+ * 
+ * 
+ * 
+ * 
+ * ! INSTRUCTIONS FOR THIS PROGRAM - 
+ * 
+ * * HOW To RUN and COMPILE this program:
+ *  * 1. Open Terminal
+ *  * 2. Type(in Terminal): g++ ProjectTwo.cpp -o ProjectTwo
+ *  * 3. Press Enter
+ *  * 4. Type(in Terminal): ./ProjectTwo
+ *  * 5. Press Enter
+ * 
+ * 
+ * 
+ * * Menu options:
+ *   1. Load Data Structure
+ *      - Loads Up CSV Courses to program
+ *        * IMPORTANT: NEED TO PUT NAME OF CSV WHEN PROMPTED WHICH IS : CS 300 ABCU_Advising_Program_Input.csv
+ *   2. Print Course List
+ *      - Prints  all courses in CSV in Alphanumeric Order to output in Terminal
+ *   3. Print Course.
+ *      - Users Types Course Number to output (Example: csci400 or CSCI400)
+ *      - Output Returns Course Number, Name, and any Prerequisites for that Course,IF ANY
+ *   9. Exits Program
+ *
+ *  
+ * */ 
+//=====================================================================================================================
+
+
+
+
+
+
+//==============================================================================================================================================================================================================================
+// START OF CODE HERE
+//==============================================================================================================================================================================================================================
+
 #include <iostream>
 #include <fstream>
 #include <sstream>
@@ -9,6 +59,9 @@ using namespace std;
 
 //=========================================================
 // Course Structure
+//
+// STORES COURSE INFORMATION INCLUDING COURSE NUMBER , TITLE
+// AND PREREQUISITES
 //=========================================================
 
 struct Course {
@@ -30,6 +83,10 @@ struct Course {
 
 //===========================================================
 // Node Strucuture
+//
+// REPRESENTS A SINGLE NODE IN THE BUINARY SEARCH TREE.
+// EACH NODE CONTAINS A COURSE OBJECT
+// LEFT AND RIGHT CHILD NODES.
 //===========================================================
 
 struct Node {
@@ -52,6 +109,10 @@ struct Node {
 
 //=============================================================
 // Binary Search Tree Class
+//
+// PROVIIDES FUNCTIONALITY FOR INSERTING COURSE,
+// SEARCHING FOR COURSES, AND DISPLAYING COURSES
+// IN ALPHANUMERIC ORDER.
 //=============================================================
 
 class BinarySearchTree {
@@ -76,6 +137,8 @@ class BinarySearchTree {
 
 //================================================================
 // Constructor
+//
+// CREATES AN EMPTY BINARY SEARCH TREE
 //================================================================
 
 BinarySearchTree::BinarySearchTree() {
@@ -85,6 +148,8 @@ BinarySearchTree::BinarySearchTree() {
 
 //================================================================
 // Insert
+//
+// INSERTS A COURSE INTO THE BINARY SEARCH TREE.
 //================================================================
 
 void BinarySearchTree::Insert(Course course) {
@@ -99,6 +164,9 @@ void BinarySearchTree::Insert(Course course) {
 
 //===============================================================
 // addNode
+//
+// RECURSIVELY FINDS THE CORRECT LOCATION IN THE TREE
+// AND INSERTS THE NEW COURSE NODE.
 //===============================================================
 
 void BinarySearchTree::addNode(Node* node, Course course) {
@@ -129,6 +197,9 @@ void BinarySearchTree::addNode(Node* node, Course course) {
 
 //============================================================
 // Search
+//
+// SEARCHES THE BINARY SEARCH TREE  FOR A COURSE NUMBER.
+// RETURNS THE MATCHING COURSE IF FOUND.
 //============================================================
 
 Course BinarySearchTree::Search(string courseNumber) {
@@ -155,6 +226,8 @@ Course BinarySearchTree::Search(string courseNumber) {
 
 //===================================================================================================
 // InOrder (Search Method)
+//
+// STARTS AN INORDER TRAVERSAL OF THE BINARY SEARCH TREE.
 //===================================================================================================
 
 void BinarySearchTree::InOrder() {
@@ -166,6 +239,9 @@ void BinarySearchTree::InOrder() {
 
 //=============================================================
 //inOrder
+//
+// RECURSIVELY TRAVERSES THE BINARY SEARCH TREE IN
+// ALPHANUMERIC ORDER AND DISPLAYS EACH COURSE.
 //=============================================================
 
 void BinarySearchTree::inOrder(Node* node) {
@@ -188,6 +264,10 @@ void BinarySearchTree::inOrder(Node* node) {
 
 //==================================================================
 // Load Courses Function
+//
+// READS COURSE INFORMATION FROM A CSV FILE, 
+// CREATES COURSE OBJECTS, AND INSERTS THEM
+// INTO THE BINARY SEARCH TREE.
 //==================================================================
 
 void loadCourses(string fileName, BinarySearchTree* bst) {
@@ -246,25 +326,6 @@ void loadCourses(string fileName, BinarySearchTree* bst) {
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 //======================================================================
 // Function prototype
 //======================================================================
@@ -275,9 +336,12 @@ void loadCourses(string fileName, BinarySearchTree* bst);
 
 
 
-//=================================================================================================
-// Main
-//=================================================================================================
+//===================================================================================================================================================
+// Main METHOD
+//
+// DISPLAYS THE MENU SYSTEM AND PROCESSES
+// USER SELECTIONS
+//===================================================================================================================================================
 
 int main() {
 
@@ -305,9 +369,6 @@ int main() {
 
         
 
-
-
-
         /* MENU SWITCH CASE LOGIC START */
         switch(choice) {
         
@@ -316,7 +377,7 @@ int main() {
             string fileName;
 
             cout << "Enter CSV file name: ";
-            
+
             cin.ignore();
             getline(cin, fileName);
 
