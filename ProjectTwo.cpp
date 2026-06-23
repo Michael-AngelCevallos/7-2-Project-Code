@@ -365,7 +365,15 @@ int main() {
         cout << endl;
 
         cout << "What would you like to do? (Enter Number Choice)";
-        cin >> choice;
+        
+        if (!(cin >> choice)) {
+            cout << "Invalid input.  Please enter a menu option." << endl;
+
+            cin.clear();
+            cin.ignore(1000, '\n');
+
+            continue;
+        }
 
         
 
