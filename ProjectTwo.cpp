@@ -3,6 +3,7 @@
 #include <sstream>
 #include <vector>
 #include <string>
+#include <cctype>
 
 using namespace std;
 
@@ -302,7 +303,7 @@ int main() {
         cout << "What would you like to do? (Enter Number Choice)";
         cin >> choice;
 
-
+        
 
 
 
@@ -310,10 +311,21 @@ int main() {
         /* MENU SWITCH CASE LOGIC START */
         switch(choice) {
         
-        case 1: 
-            loadCourses("CS 300 ABCU_Advising_Program_Input.csv", &bst);
+        case 1: {
+            
+            string fileName;
+
+            cout << "Enter CSV file name: ";
+            
+            cin.ignore();
+            getline(cin, fileName);
+
+            loadCourses(fileName, &bst);
+
             break;
             
+        }
+
 
 
         case 2:
@@ -332,6 +344,11 @@ int main() {
 
             cout << "What course do you want to know about? ";
             cin >> courseNumber;
+
+            /* Finds Course Number Even wehn User Types without CAPS*/
+            for (char& c : courseNumber) {
+                c = toupper(c);
+            }
 
             Course course = bst.Search(courseNumber);
 
@@ -384,6 +401,9 @@ int main() {
             cout << choice << " is not a valid option." << endl;    
 
         }
+
+
+
     }
 
     return 0;
